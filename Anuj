@@ -1,0 +1,167 @@
+# In[1]:
+
+
+Name = 'ANUJ BURDE'
+
+
+# In[3]:
+
+
+print(Name)
+
+
+# In[23]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# In[24]:
+
+
+#####NumPy is the fundamental package for scientific computing in Python. 
+#It is a Python library that provides a multidimensional array object, 
+#various derived objects (such as masked arrays and matrices), 
+#and an assortment of routines for fast operations on arrays, 
+#including mathematical, logical, shape manipulation, sorting, 
+#selecting, I/O, discrete Fourier transforms, basic linear algebra, 
+#basic statistical operations, random simulation and much more
+
+
+# In[25]:
+
+
+#Q1 Add
+#Add function, add is used for concatenation of array
+a = np.array([[1,2],[2,3],[3,4]])
+print(a)
+b = np.insert(a,4,5)
+print(b)
+
+>[[1 2]
+ [2 3]
+ [3 4]]
+[1 2 2 3 5 3 4]
+
+
+# In[32]:
+
+
+np.char.add(["HI","a"],[" im"," robot"])
+>array(['HI im', 'a robot'], dtype='<U8')
+
+# In[45]:
+
+
+#Q3 Find
+#find function used to find a word in an array
+
+find1 = np.array(["hope you are doing okay"])
+find2 = np.char.find(find1,"are")
+print(find2)
+>[9]
+
+
+# In[50]:
+
+
+find1 = np.array(["Where Is Waldo"])
+find2=np.char.find(find1, "Waldo")
+print(find2)
+
+find3 = np.array(["Where Is Waldo",'Waldo Is Here'])
+find4=np.char.find(find3, "Waldo", start=0 , end=6)
+print(find4)
+#Here since end is given as 6 first 'Waldo' is found at -1, i.e it started backwards
+
+find5= np.array(["Where Is Waldo",'Waldo Is Here'])
+find6=np.char.find(find3, "Waldo", start=0 , end=4)
+print(find6)
+#Here since end is 4 it shows -1 for second 'Waldo'
+>>>[9]
+[-1  0]
+[-1 -1]
+
+
+# In[51]:
+
+
+#Q3 Count
+#this function is used to count specific data in an array
+
+cou=np.array(['John', 'OOwen', 'Jacob', 'ChandOler'])
+cou1=np.char.count(cou,'o')
+print(cou1)
+
+cou2=np.char.count(cou,'O')
+print(cou2)
+
+cou3=np.char.count(cou,'O',start=2,end=6)
+print(cou3)
+>>> [1 0 1 0]
+[0 2 0 1]
+[0 0 0 1]
+
+
+# In[35]:
+
+
+#Q4 np.random.rand()
+#Used to generate an array of random integers
+
+#Generate a random number between 0 and 1'
+rand_number = np.random.rand()
+rand_number
+>0.5653261101771433
+
+
+# In[36]:
+
+
+#Generate a sequence of random numbers between  and 
+rand_numbers= np.random.rand(10)
+rand_numbers
+>array([0.96887282, 0.48762994, 0.29263199, 0.18489853, 0.04787263,
+       0.40935772, 0.69978372, 0.77304548, 0.80626822, 0.00655867])
+
+
+# In[37]:
+
+
+#Generating white noise for statistical models
+white_noise = np.random.rand(1000)
+plt.plot(white_noise)
+
+
+# In[28]:
+
+
+#Q5 np.linspace()
+#This function is used to create an array of a defined number of points inside a range
+
+
+arr1 = np.linspace(0, 2, 10)
+arr1
+>array([0.        , 0.22222222, 0.44444444, 0.66666667, 0.88888889,
+       1.11111111, 1.33333333, 1.55555556, 1.77777778, 2.        ])
+
+
+# In[30]:
+
+
+#Generate an arbitrary number of x coordinates, based on which y coordiantes can be calculated and the result can be plotted
+x_coord = np.linspace(0,6,1000)
+y_coord = np.sin(x_coord)
+plt.scatter(x_coord,y_coord)
+
+
+# In[31]:
+
+
+#Generate a trend line for comparison on the chart
+x_coord2 = np.linspace(0,500,100)
+y_coord2 = (x_coord2 + 5) * (1+np.random.rand(100)/10)
+yhat_coord2 = np.linspace(0,500,100)
+plt.plot(x_coord2,y_coord2)
+plt.plot(x_coord2,yhat_coord2)
